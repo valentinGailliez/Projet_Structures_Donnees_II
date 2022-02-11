@@ -5,7 +5,7 @@ package Projet_Structures_Donnees;
 
 public class App {
     public String getGreeting() {
-        return "Hello!";
+        return "Hello world!";
     }
 
     public static void main(String[] args) {
