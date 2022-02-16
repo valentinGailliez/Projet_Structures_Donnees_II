@@ -10,17 +10,18 @@ public class Figure {
 	public Figure() {
 		this.segments = new ArrayList<>();
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Figure [segments=" + segments + "]";
 	}
 
 	public boolean AddSegment(Segment s) {
-		return true;
-		if(segments.size()==0) return segments.add(s);
-		if(!(segments.contains(s)))return segments.add(s);
+		if (segments.size() == 0)
+			return segments.add(s);
+		if (!(segments.contains(s)))
+			return segments.add(s);
 		return false;
 	}
-	
+
 }

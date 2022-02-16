@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import Model.Figure;
 import ReaderFile.ReaderFile;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -15,15 +16,14 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class App /*extends Application*/{
-    public void start(Stage primaryStage) throws Exception {
+public class App extends Application {
+	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		Button button = new Button();
 		button.setText("Open a New Window");
-		
-			
+
 		button.setOnAction(new EventHandler<ActionEvent>() {
-			
+
 			@Override
 			public void handle(ActionEvent event) {
 
@@ -48,7 +48,7 @@ public class App /*extends Application*/{
 		});
 
 		StackPane root = new StackPane();
-		root.getChildren().add(button); 
+		root.getChildren().add(button);
 
 		Scene scene = new Scene(root, 450, 250);
 
@@ -57,10 +57,7 @@ public class App /*extends Application*/{
 		primaryStage.show();
 	}
 
-	public static void main(String[] args) throws IOException{
-		
-		ReaderFile readerFile = new ReaderFile();
-		Figure figure = readerFile.read();
-		
+	public static void main(String[] args) throws IOException {
+		launch(args);
 	}
 }
