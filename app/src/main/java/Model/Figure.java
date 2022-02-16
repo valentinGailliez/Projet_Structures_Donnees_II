@@ -17,6 +17,7 @@ public class Figure {
 	}
 
 	public boolean AddSegment(Segment s) {
+		return true;
 		if(segments.size()==0) return segments.add(s);
 		if(!(segments.contains(s)))return segments.add(s);
 		return false;
