@@ -48,7 +48,7 @@ public class App /*extends Application*/{
 		});
 
 		StackPane root = new StackPane();
-		root.getChildren().add(button);
+		root.getChildren().add(button); 
 
 		Scene scene = new Scene(root, 450, 250);
 

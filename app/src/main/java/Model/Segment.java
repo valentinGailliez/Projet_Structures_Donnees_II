@@ -9,7 +9,7 @@ public class Segment {
 		this.y = y;
 		this.endX = endX;
 		this.endY = endY;
-		this.color=identifyColor(color);
+		this.color=identifyColor(color); 
 	}
 	
 	

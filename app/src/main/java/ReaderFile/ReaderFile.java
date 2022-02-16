@@ -21,7 +21,7 @@ public class ReaderFile {
 		String line;
 		String line_cut[];
 		in.readLine();
-		while ((line = in.readLine()) != null)
+		while ((line = in.readLine()) != null) 
 		{
 			line_cut = line.split(" ");
 			segment = new Segment(Float.parseFloat(line_cut[0]),Float.parseFloat(line_cut[1]),Float.parseFloat(line_cut[2]),Float.parseFloat(line_cut[3]),line_cut[4]);
