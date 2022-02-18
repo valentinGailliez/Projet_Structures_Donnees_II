@@ -10,7 +10,6 @@ import Model.Segment;
 public class ReaderFile {
 
 	Figure figure = new Figure();
-	Segment segment;
 
 	public ReaderFile(String path) {
 		try {
@@ -28,6 +27,7 @@ public class ReaderFile {
 		String line;
 		String line_cut[];
 		in.readLine();
+		Segment segment;
 		while ((line = in.readLine()) != null) {
 			line_cut = line.split(" ");
 			segment = new Segment(Float.parseFloat(line_cut[0]), Float.parseFloat(line_cut[1]),
