@@ -39,6 +39,10 @@ public class ReaderFile {
 		return figure;
 	}
 
+	public Figure getFigure() {
+		return this.figure;
+	}
+
 	@Override
 	public String toString() {
 		return "Figure [" + figure.toString() + "]";

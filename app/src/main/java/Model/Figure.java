@@ -16,6 +16,10 @@ public class Figure {
 		return "Figure [segments=" + segments + "]";
 	}
 
+	public List<Segment> getSegments() {
+		return this.segments;
+	}
+
 	public boolean AddSegment(Segment s) {
 		if (segments.size() == 0)
 			return segments.add(s);
