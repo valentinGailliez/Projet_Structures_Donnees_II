@@ -1,5 +1,6 @@
 package BSP;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Model.Figure;
@@ -18,13 +19,33 @@ public class BinarySpacePartitionTree {
     }
 
     private Tree ConstructingBSP(List<Segment> segments) {
-
+        Tree tree = new Tree();
         // Check the number of segment
         if (segments.size() <= 1) {
-            this.tree.node = segments.get(0);
-            return this.tree;
+            tree.setNode(segments.get(0));
+        } else {
+            // Get the first segment to divide the other one
+            Segment splitingLine = segments.get(0);
+            float deltaAbscissa = splitingLine.getEndX() - splitingLine.getX();
+            float deltaOrdinate = splitingLine.getEndY() - splitingLine.getY();
+
+            for (Segment segment : segments) {
+                if (!(segment == splitingLine)) {
+                    if (segment.getX() <= splitingLine.getX() && segment.getEndX() >= splitingLine.getEndX()) {
+                        if (segment.getY() <= splitingLine.getY() && segment.getEndY() >= splitingLine.getEndY()) {
+                            
+                        }
+                    }
+                }
+            }
+
+            List<Segment> positivSubSegments = new ArrayList<>();
+            List<Segment> negativSubSegments = new ArrayList<>();
+            tree.setPositivSubTree(ConstructingBSP(positivSubSegments));
+            tree.setNegativSubTree(ConstructingBSP(negativSubSegments));
+
         }
-        return null;
+        return tree;
 
     }
 }
