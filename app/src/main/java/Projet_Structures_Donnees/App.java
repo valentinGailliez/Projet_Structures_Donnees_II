@@ -3,10 +3,10 @@
  */
 package Projet_Structures_Donnees;
 
-import View.Window;
+import View.BinarySpacePartitionApp;
 
 public class App {
 	public static void main(String[] args) throws Exception {
-		Window.main(args);
+		BinarySpacePartitionApp.main(args);
 	}
 }
