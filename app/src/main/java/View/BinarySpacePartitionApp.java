@@ -2,6 +2,7 @@ package View;
 
 import java.io.File;
 
+import Model.Figure;
 import ReaderFile.ReaderFile;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -12,10 +13,11 @@ import javafx.stage.Stage;
 public class BinarySpacePartitionApp extends Application {
     private static Stage stage;
     private static Scene scene;
+    private static Figure figure;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        figure = null;
         stage = primaryStage;
 
         stage.setFullScreenExitHint("");
@@ -32,6 +34,14 @@ public class BinarySpacePartitionApp extends Application {
         stage.show();
     }
 
+    public static Figure getFigure() {
+        return figure;
+    }
+
+    public static void setFigure(Figure figure) {
+        BinarySpacePartitionApp.figure = figure;
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -44,6 +54,11 @@ public class BinarySpacePartitionApp extends Application {
         stage.getScene().setRoot(switchScene);
     }
 
+    public static void ResetFigure() {
+        figure = null;
+        switchScene(new FilePage());
+    }
+
     public static void Read() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Upload File Path");
@@ -52,7 +67,8 @@ public class BinarySpacePartitionApp extends Application {
         File reader = fileChooser.showOpenDialog(stage.getScene().getWindow());
         if (reader != null) {
             ReaderFile readerFile = new ReaderFile(reader.getAbsolutePath());
-            System.out.println(readerFile);
+            setFigure(readerFile.getFigure());
+
         } else {
             System.out.println("error"); // or something else
         }
