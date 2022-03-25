@@ -8,10 +8,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
-public class FileView extends Window {
+public class FilePage extends Window {
     private Label chargerFichier;
 
-    public FileView() {
+    public FilePage() {
         super();
         fileButton.setDisable(true);
 
