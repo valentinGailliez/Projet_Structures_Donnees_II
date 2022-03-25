@@ -19,16 +19,17 @@ public class BinarySpacePartitionApp extends Application {
         stage = primaryStage;
 
         stage.setFullScreenExitHint("");
-
+        stage.setMaximized(true);
+        stage.setResizable(false);
         scene = new Scene(new HomePage());
 
-        primaryStage.setScene(scene);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setMinWidth(250.);
+        stage.setMinHeight(250.);
+        stage.setTitle("Binary Space Partition");
 
-        primaryStage.setMinWidth(1080.);
-        primaryStage.setMinHeight(720.);
-        primaryStage.setTitle("Binary Space Partition");
-
-        primaryStage.show();
+        stage.show();
     }
 
     public static void main(String[] args) {
