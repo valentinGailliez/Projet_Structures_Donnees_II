@@ -10,6 +10,7 @@ public class Window extends StackPane {
     protected Button homeButton, fileButton, schemeButton, infoButton;
 
     public Window() {
+
         homeButton = new Button();
         homeButton.setText("Menu Principal");
         fileButton = new Button();
@@ -23,6 +24,11 @@ public class Window extends StackPane {
         fileButton.setMaxWidth(Double.MAX_VALUE);
         schemeButton.setMaxWidth(Double.MAX_VALUE);
 
+        if (BinarySpacePartitionApp.getFigure() == null) {
+            schemeButton.setDisable(true);
+        } else {
+            schemeButton.setDisable(false);
+        }
         HBox hboxButton = new HBox();
         hboxButton.setAlignment(Pos.TOP_LEFT);
         HBox.setHgrow(homeButton, Priority.ALWAYS);
