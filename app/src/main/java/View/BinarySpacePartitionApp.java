@@ -11,9 +11,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class BinarySpacePartitionApp extends Application {
-    private static Stage stage;
+    public static Stage stage;
     private static Scene scene;
     private static Figure figure;
+    private static String[] info;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -27,11 +28,18 @@ public class BinarySpacePartitionApp extends Application {
 
         stage.setScene(scene);
         stage.centerOnScreen();
-        stage.setMinWidth(250.);
-        stage.setMinHeight(250.);
         stage.setTitle("Binary Space Partition");
 
         stage.show();
+
+    }
+
+    public static String[] openInfoPopup() {
+        return info;
+    }
+
+    public static void close() {
+        stage.close();
     }
 
     public static Figure getFigure() {
@@ -43,7 +51,8 @@ public class BinarySpacePartitionApp extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        info = args;
+        launch(info);
     }
 
     public static Scene getScene() {
@@ -61,14 +70,14 @@ public class BinarySpacePartitionApp extends Application {
 
     public static void Read() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Upload File Path");
+        fileChooser.setTitle("Ouvrir un fichier Texte (Txt)");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("TEXT", "*.txt"));
         File reader = fileChooser.showOpenDialog(stage.getScene().getWindow());
         if (reader != null) {
             ReaderFile readerFile = new ReaderFile(reader.getAbsolutePath());
             setFigure(readerFile.getFigure());
-
+            BinarySpacePartitionApp.switchScene(new GraphicsPage());
         } else {
             System.out.println("error"); // or something else
         }

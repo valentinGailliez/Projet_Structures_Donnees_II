@@ -1,50 +1,49 @@
 package View;
 
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 public class Window extends StackPane {
     protected Button homeButton, fileButton, schemeButton, infoButton;
 
     public Window() {
+        Menu home = new Menu("Home");
+        MenuItem closeApp = new MenuItem("Close");
+        MenuItem infoApp = new MenuItem("Info");
 
-        homeButton = new Button();
-        homeButton.setText("Menu Principal");
-        fileButton = new Button();
-        fileButton.setText("Fichier");
-        schemeButton = new Button();
-        schemeButton.setText("Visionner le BSP");
-        infoButton = new Button();
-        infoButton.setText("Info");
+        home.getItems().addAll(closeApp, infoApp);
 
-        homeButton.setMaxWidth(Double.MAX_VALUE);
-        fileButton.setMaxWidth(Double.MAX_VALUE);
-        schemeButton.setMaxWidth(Double.MAX_VALUE);
+        Menu file = new Menu("Scene File");
+        MenuItem openFile = new MenuItem("Open a file");
+        MenuItem closeFile = new MenuItem("Close the file");
+        file.getItems().addAll(openFile, closeFile);
+
+        Menu graphic = new Menu("Graphics");
+        MenuItem viewGraphic = new MenuItem("View Graphic");
+        graphic.getItems().addAll(viewGraphic);
 
         if (BinarySpacePartitionApp.getFigure() == null) {
-            schemeButton.setDisable(true);
-        } else {
-            schemeButton.setDisable(false);
+            graphic.setDisable(true);
         }
-        HBox hboxButton = new HBox();
-        hboxButton.setAlignment(Pos.TOP_LEFT);
-        HBox.setHgrow(homeButton, Priority.ALWAYS);
-        HBox.setHgrow(fileButton, Priority.ALWAYS);
-        HBox.setHgrow(schemeButton, Priority.ALWAYS);
-        HBox.setHgrow(infoButton, Priority.ALWAYS);
 
-        hboxButton.getChildren().add(homeButton);
-        hboxButton.getChildren().add(fileButton);
-        hboxButton.getChildren().add(schemeButton);
-        hboxButton.getChildren().add(infoButton);
+        MenuBar mb = new MenuBar();
 
-        this.getChildren().addAll(hboxButton);
-        fileButton.setOnAction(event -> BinarySpacePartitionApp.switchScene(new FilePage()));
-        homeButton.setOnAction(event -> BinarySpacePartitionApp.switchScene(new HomePage()));
-        schemeButton.setOnAction(event -> BinarySpacePartitionApp.switchScene(new GraphicsPage()));
-        infoButton.setOnAction(event -> BinarySpacePartitionApp.switchScene(new InfoPage()));
+        // add menu to menubar
+        mb.getMenus().addAll(home, file, graphic);
+
+        // create a VBox
+        VBox vb = new VBox(mb);
+        this.getChildren().add(vb);
+
+        closeApp.setOnAction(event -> BinarySpacePartitionApp.close());
+        openFile.setOnAction(event -> BinarySpacePartitionApp.Read());
+        closeFile.setOnAction(event -> BinarySpacePartitionApp.ResetFigure());
+        infoApp.setOnAction(event -> BinarySpacePartitionApp.switchScene(new InfoPage()));
+        viewGraphic.setOnAction(event -> BinarySpacePartitionApp.switchScene(new GraphicsPage()));
     }
+
 }

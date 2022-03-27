@@ -8,9 +8,6 @@ public class GraphicsPage extends Window {
     private Label welcomeLabel;
 
     public GraphicsPage() {
-        super();
-
-        schemeButton.setDisable(true);
         this.welcomeLabel = new Label();
         welcomeLabel.setText("Graphique");
         welcomeLabel.setStyle("-fx-font: 24 arial;");

@@ -8,9 +8,6 @@ public class HomePage extends Window {
 	private Label welcomeLabel;
 
 	public HomePage() {
-		super();
-
-		homeButton.setDisable(true);
 		this.welcomeLabel = new Label();
 		welcomeLabel.setText("Bienvenue sur Binary Space Partition");
 		welcomeLabel.setStyle("-fx-font: 24 arial;");

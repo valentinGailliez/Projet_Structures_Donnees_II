@@ -13,12 +13,11 @@ public class FilePage extends Window {
     private Button resetFigure, charge;
 
     public FilePage() {
-        super();
         fileButton.setDisable(true);
 
         if (BinarySpacePartitionApp.getFigure() == null) {
             this.chargerFichier = new Label();
-            chargerFichier.setText("Veuillez charger un fichier txt");
+            chargerFichier.setText("Veuillez charger un fichier texte (Txt)");
             chargerFichier.setStyle("-fx-font: 24 arial;");
 
             HBox hboxLabel = new HBox();
@@ -31,14 +30,13 @@ public class FilePage extends Window {
             HBox hboxButtonCharge = new HBox();
             hboxButtonCharge.setAlignment(Pos.BOTTOM_CENTER);
             charge = new Button();
-            charge.setText("Open a New Window");
+            charge.setText("Ouvrir un fichier");
             charge.setStyle("-fx-font: 24 arial;");
             charge.setOnAction(new EventHandler<ActionEvent>() {
 
                 @Override
                 public void handle(ActionEvent event) {
                     BinarySpacePartitionApp.Read();
-                    BinarySpacePartitionApp.switchScene(new GraphicsPage());
                 }
             });
             hboxButtonCharge.getChildren().add(charge);
