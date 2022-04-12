@@ -11,6 +11,7 @@ public class BinarySpacePartitionTree {
 
     Tree tree;
     ReaderFile readerFile;
+    ArrayList<Segment> segments = new ArrayList<>();
 
     public BinarySpacePartitionTree(String path) {
         readerFile = new ReaderFile(path);
@@ -26,16 +27,10 @@ public class BinarySpacePartitionTree {
         } else {
             // Get the first segment to divide the other one
             Segment splitingLine = segments.get(0);
-            float deltaAbscissa = splitingLine.getEndX() - splitingLine.getX();
-            float deltaOrdinate = splitingLine.getEndY() - splitingLine.getY();
 
             for (Segment segment : segments) {
                 if (!(segment == splitingLine)) {
-                    if (segment.getX() <= splitingLine.getX() && segment.getEndX() >= splitingLine.getEndX()) {
-                        if (segment.getY() <= splitingLine.getY() && segment.getEndY() >= splitingLine.getEndY()) {
-                            
-                        }
-                    }
+                    
                 }
             }
 
@@ -48,4 +43,5 @@ public class BinarySpacePartitionTree {
         return tree;
 
     }
+
 }

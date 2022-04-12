@@ -3,12 +3,13 @@ package View;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 
-public class GraphicsPage extends Window {
+public class GeneratePainters extends Window {
     private Label welcomeLabel;
 
-    public GraphicsPage() {
+    public GeneratePainters() {
         this.welcomeLabel = new Label();
-        welcomeLabel.setText("Graphique");
+        welcomeLabel.setText("Generer le graphique");
+
         welcomeLabel.setStyle("-fx-font: 24 arial;");
         welcomeLabel.setAlignment(Pos.TOP_CENTER);
 

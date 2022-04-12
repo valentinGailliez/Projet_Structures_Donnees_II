@@ -13,8 +13,8 @@ import javafx.stage.Stage;
 public class BinarySpacePartitionApp extends Application {
     public static Stage stage;
     private static Scene scene;
-    private static Figure figure;
-    private static String[] info;
+    public static Figure figure;
+    protected static String fileDirectory;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -34,10 +34,6 @@ public class BinarySpacePartitionApp extends Application {
 
     }
 
-    public static String[] openInfoPopup() {
-        return info;
-    }
-
     public static void close() {
         stage.close();
     }
@@ -51,8 +47,7 @@ public class BinarySpacePartitionApp extends Application {
     }
 
     public static void main(String[] args) {
-        info = args;
-        launch(info);
+        launch(args);
     }
 
     public static Scene getScene() {
@@ -65,7 +60,7 @@ public class BinarySpacePartitionApp extends Application {
 
     public static void ResetFigure() {
         figure = null;
-        switchScene(new FilePage());
+        switchScene(new HomePage());
     }
 
     public static void Read() {
@@ -77,9 +72,18 @@ public class BinarySpacePartitionApp extends Application {
         if (reader != null) {
             ReaderFile readerFile = new ReaderFile(reader.getAbsolutePath());
             setFigure(readerFile.getFigure());
-            BinarySpacePartitionApp.switchScene(new GraphicsPage());
+            setFileDirectory(reader.getAbsolutePath());
+            BinarySpacePartitionApp.switchScene(new GraphicsOptions());
         } else {
             System.out.println("error"); // or something else
         }
+    }
+
+    public String getFileDirectory() {
+        return fileDirectory;
+    }
+
+    public static void setFileDirectory(String fileDirectory) {
+        fileDirectory = fileDirectory;
     }
 }
