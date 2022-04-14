@@ -11,9 +11,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class BinarySpacePartitionApp extends Application {
-    private static Stage stage;
+    public static Stage stage;
     private static Scene scene;
-    private static Figure figure;
+    public static Figure figure;
+    protected static String fileDirectory;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -27,11 +28,14 @@ public class BinarySpacePartitionApp extends Application {
 
         stage.setScene(scene);
         stage.centerOnScreen();
-        stage.setMinWidth(250.);
-        stage.setMinHeight(250.);
         stage.setTitle("Binary Space Partition");
 
         stage.show();
+
+    }
+
+    public static void close() {
+        stage.close();
     }
 
     public static Figure getFigure() {
@@ -56,21 +60,30 @@ public class BinarySpacePartitionApp extends Application {
 
     public static void ResetFigure() {
         figure = null;
-        switchScene(new FilePage());
+        switchScene(new HomePage());
     }
 
     public static void Read() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Upload File Path");
+        fileChooser.setTitle("Ouvrir un fichier Texte (Txt)");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("TEXT", "*.txt"));
         File reader = fileChooser.showOpenDialog(stage.getScene().getWindow());
         if (reader != null) {
             ReaderFile readerFile = new ReaderFile(reader.getAbsolutePath());
             setFigure(readerFile.getFigure());
-
+            setFileDirectory(reader.getAbsolutePath());
+            BinarySpacePartitionApp.switchScene(new GraphicsOptions());
         } else {
             System.out.println("error"); // or something else
         }
+    }
+
+    public String getFileDirectory() {
+        return fileDirectory;
+    }
+
+    public static void setFileDirectory(String fileDirectory) {
+        fileDirectory = fileDirectory;
     }
 }
