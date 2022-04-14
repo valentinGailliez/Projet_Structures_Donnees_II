@@ -27,17 +27,48 @@ public class BinarySpacePartitionTree {
         } else {
             // Get the first segment to divide the other one
             Segment splitingLine = segments.get(0);
-
-            for (Segment segment : segments) {
-                if (!(segment == splitingLine)) {
-                    
-                }
+            float gradientSplitingLine, gradientSegment;
+            String orientationSplitingLine, orientationSegment;
+            if (splitingLine.getEndX() != splitingLine.getX()) {
+                orientationSplitingLine = "Oblique";
+                gradientSplitingLine = (splitingLine.getEndY() - splitingLine.getY())
+                        / (splitingLine.getEndX() - splitingLine.getX());
+            } else {
+                gradientSplitingLine = splitingLine.getY();
+                orientationSplitingLine = "Vertical";
             }
 
             List<Segment> positivSubSegments = new ArrayList<>();
             List<Segment> negativSubSegments = new ArrayList<>();
+
+            // Loop on every segments of our file
+            for (Segment segment : segments) {
+                // If it's not the same segment
+                if (!(segment == splitingLine)) {
+                    // Get the gradient of each segment
+                    if (segment.getEndX() != segment.getX()) {
+                        orientationSegment = "Oblique";
+                        gradientSegment = (segment.getEndY() - segment.getY())
+                                / (segment.getEndX() - segment.getX());
+                    } else {
+                        orientationSegment = "Vertical";
+                        gradientSegment = segment.getY();
+                    }
+                    if (gradientSegment == gradientSplitingLine && orientationSegment.equals(orientationSplitingLine)) {
+                        if (segment.getX() == splitingLine.getX() || segment.getY() == splitingLine.getY()) {
+                            positivSubSegments.add(segment);
+                        } else {
+                            
+                        }
+                    } else {
+
+                    }
+                }
+            }
+
             tree.setPositivSubTree(ConstructingBSP(positivSubSegments));
             tree.setNegativSubTree(ConstructingBSP(negativSubSegments));
+            tree.setNode(splitingLine);
 
         }
         return tree;
