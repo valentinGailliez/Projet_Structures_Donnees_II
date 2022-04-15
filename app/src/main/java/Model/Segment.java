@@ -16,6 +16,15 @@ public class Segment {
 		this.color = identifyColor(color);
 	}
 
+	public Segment(float x, float y, float endX, float endY, Color color) {
+		super();
+		this.setX(x);
+		this.setY(y);
+		this.setEndX(endX);
+		this.setEndY(endY);
+		this.color = color;
+	}
+
 	public float getY() {
 		return y;
 	}
@@ -53,6 +62,10 @@ public class Segment {
 		return "Figure [x=" + getX() + ", y=" + getY() + ", endX=" + getEndX() + ", endY=" + getEndY() + ", color="
 				+ color
 				+ "]\n";
+	}
+
+	public Color getColor() {
+		return color;
 	}
 
 	private Color identifyColor(String colorText) {
