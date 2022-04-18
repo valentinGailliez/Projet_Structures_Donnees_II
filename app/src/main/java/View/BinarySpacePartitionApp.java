@@ -2,6 +2,7 @@ package View;
 
 import java.io.File;
 
+import BSP.BinarySpacePartitionTree;
 import Model.Figure;
 import ReaderFile.ReaderFile;
 import javafx.application.Application;
@@ -15,6 +16,7 @@ public class BinarySpacePartitionApp extends Application {
     private static Scene scene;
     public static Figure figure;
     protected static String fileDirectory;
+    protected static BinarySpacePartitionTree bsp;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -70,9 +72,9 @@ public class BinarySpacePartitionApp extends Application {
                 new FileChooser.ExtensionFilter("TEXT", "*.txt"));
         File reader = fileChooser.showOpenDialog(stage.getScene().getWindow());
         if (reader != null) {
-            ReaderFile readerFile = new ReaderFile(reader.getAbsolutePath());
-            setFigure(readerFile.getFigure());
-            setFileDirectory(reader.getAbsolutePath());
+            //Methode de construction pas fonctionnelle
+            //Boucle probable du à la récursivité
+            bsp = new BinarySpacePartitionTree(reader.getAbsolutePath());
             BinarySpacePartitionApp.switchScene(new GraphicsOptions());
         } else {
             System.out.println("error"); // or something else
